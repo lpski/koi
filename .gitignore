@@ -38,3 +38,7 @@ yarn-error.log*
 .vscode/
 .eslintcache
 .env
+koi/analyzer_og.py
+koi/backtester_og.py
+koi/market_data/root_og.py
+koi/modeling/cnn_og.py
