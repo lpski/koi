@@ -1,6 +1,7 @@
 import asyncio, numpy as np, sys, eel
 from datetime import datetime
 from typing import Dict
+from dotenv import load_dotenv
 from koi.controller import Platform
 from koi.models import KoiState
 from koi.utils import save_strategy_config
@@ -251,5 +252,6 @@ def start_eel(develop):
 
 if __name__ == '__main__':
     import sys
+    load_dotenv()
     platform = Platform()
     start_eel(develop=len(sys.argv) == 2)

@@ -75,7 +75,6 @@ export const isKoiState = (obj: any): obj is KoiState => {
   if (typeof(obj.ib_connected) !== 'boolean') return false;
   if (typeof(obj.market_ticks_streaming) !== 'boolean' || typeof(obj.crypto_ticks_streaming) !== 'boolean' )
   if (!Array.isArray(obj.strategies)) return false;
-  // if (typeof(obj.market_data) !== 'object') return false;
 
   return true;
 }

@@ -23,10 +23,18 @@ yarn-debug.log*
 yarn-error.log*
 
 # data
-/config/data
+/config/data/*
+/config/analyses/*
+/config/bt_bars/*
+/config/models/*
+/config/stats/*
+/config/transactions/*
+/config/visited/*
+/config/config.ini
+/config/state_backup.json
+
 **/__pycache__
 
-config/
 .vscode/
 .eslintcache
 .env

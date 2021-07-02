@@ -1,0 +1,405 @@
+{
+    "strategies": {
+        "CNN-Managed": {
+            "equity": 50000,
+            "initial_capital": 50000,
+            "available_capital": 50000,
+            "start_date": "2021-01-14 13:56:00",
+            "crypto": false,
+            "trade_config": {
+                "trade_frequency": 300,
+                "stop_loss_pct": 0.03,
+                "recent_data_duration": "5 D",
+                "train_duration": "20 D"
+            },
+            "cnn_config": {
+                "cnn_layers": [
+                    {
+                        "filters": 64,
+                        "kernel_size": 3,
+                        "stride": 1,
+                        "regularizer": 0,
+                        "dropout": 0,
+                        "pool_size": 0,
+                        "padding": "same"
+                    },
+                    {
+                        "filters": 96,
+                        "kernel_size": 3,
+                        "stride": 1,
+                        "regularizer": 0,
+                        "dropout": 0,
+                        "pool_size": 0,
+                        "padding": "valid"
+                    }
+                ],
+                "dense_layers": [{ "units": 400, "dropout": 0 }],
+                "batch_size": 16,
+                "epochs": 1000,
+                "optimizer": "adam",
+                "lr": 1e-5,
+                "lookback": 3,
+                "n_feats": 225,
+                "flush_models": false
+            },
+            "contracts": [
+                {
+                    "symbol": "LYFT",
+                    "exchange": "SMART",
+                    "whatToShow": "Trades",
+                    "primaryExchange": "ISLAND",
+                    "contract_type": "STOCK"
+                },
+                {
+                    "symbol": "TSLA",
+                    "exchange": "SMART",
+                    "whatToShow": "Trades",
+                    "primaryExchange": "ISLAND",
+                    "contract_type": "STOCK"
+                },
+                {
+                    "symbol": "TQQQ",
+                    "exchange": "SMART",
+                    "whatToShow": "Trades",
+                    "primaryExchange": "ISLAND",
+                    "contract_type": "STOCK"
+                },
+                {
+                    "symbol": "GME",
+                    "exchange": "SMART",
+                    "whatToShow": "Trades",
+                    "primaryExchange": "ISLAND",
+                    "contract_type": "STOCK"
+                }
+            ],
+            "portfolios": {}
+        },
+
+        "Pure-Indicators": {
+            "equity": 20000,
+            "initial_capital": 20000,
+            "available_capital": 20000,
+            "start_date": "2021-01-14 13:56:00",
+            "crypto": false,
+            "trade_config": {
+                "trade_frequency": 300,
+                "stop_loss_pct": 0.03,
+                "recent_data_duration": "2 D",
+                "train_pct": 0.70,
+                "train_duration": "60 D"
+            },
+            "analysis_config": {
+                "duration": "60 D",
+                "correlation_threshold": 0.035,
+                "accuracy_threshold": 0.6,
+                "extremes_pct": 0.37
+            },
+            "contracts": [{
+                "symbol": "SRNE",
+                "exchange": "SMART",
+                "whatToShow": "Trades",
+                "primaryExchange": "ISLAND",
+                "contract_type": "STOCK"
+            },{
+                "symbol": "TSLA",
+                "exchange": "SMART",
+                "whatToShow": "Trades",
+                "primaryExchange": "ISLAND",
+                "contract_type": "STOCK"
+            },{
+                "symbol": "PLUG",
+                "exchange": "SMART",
+                "whatToShow": "Trades",
+                "primaryExchange": "ISLAND",
+                "contract_type": "STOCK"
+            },{
+                "symbol": "MARA",
+                "exchange": "SMART",
+                "whatToShow": "Trades",
+                "primaryExchange": "ISLAND",
+                "contract_type": "STOCK"
+            },{
+                "symbol": "GEVO",
+                "exchange": "SMART",
+                "whatToShow": "Trades",
+                "primaryExchange": "ISLAND",
+                "contract_type": "STOCK"
+            },{
+                "symbol": "WKHS",
+                "exchange": "SMART",
+                "whatToShow": "Trades",
+                "primaryExchange": "ISLAND",
+                "contract_type": "STOCK"
+            },{
+                "symbol": "BLNK",
+                "exchange": "SMART",
+                "whatToShow": "Trades",
+                "primaryExchange": "ISLAND",
+                "contract_type": "STOCK"
+            },{
+                "symbol": "PHUN",
+                "exchange": "SMART",
+                "whatToShow": "Trades",
+                "primaryExchange": "ISLAND",
+                "contract_type": "STOCK"
+            },{
+                "symbol": "XPEV",
+                "exchange": "SMART",
+                "whatToShow": "Trades",
+                "primaryExchange": "ISLAND",
+                "contract_type": "STOCK"
+            },{
+                "symbol": "VIAC",
+                "exchange": "SMART",
+                "whatToShow": "Trades",
+                "primaryExchange": "ISLAND",
+                "contract_type": "STOCK"
+            },{
+                "symbol": "CMCSA",
+                "exchange": "SMART",
+                "whatToShow": "Trades",
+                "primaryExchange": "ISLAND",
+                "contract_type": "STOCK"
+            }],
+            "portfolios": {}
+        },
+
+
+        "Social-Managed": {
+            "equity": 20000,
+            "initial_capital": 20000,
+            "available_capital": 20000,
+            "start_date": "2021-01-14 13:56:00",
+            "crypto": false,
+            "trade_config": {
+                "trade_frequency": 60,
+                "stop_loss_pct": 0.03,
+                "recent_data_duration": "1 D",
+                "train_pct": 0.70,
+                "train_duration": "7 D"
+            },
+            "analysis_config": {
+                "duration": "7 D",
+                "correlation_threshold": 0.1,
+                "accuracy_threshold": 0.6,
+                "extremes_pct": 0.36
+            },
+            "contracts": [
+                {
+                    "symbol": "GME",
+                    "exchange": "SMART",
+                    "whatToShow": "Trades",
+                    "primaryExchange": "ISLAND",
+                    "contract_type": "STOCK"
+                },
+                {
+                    "symbol": "SPCE",
+                    "exchange": "SMART",
+                    "whatToShow": "Trades",
+                    "primaryExchange": "ISLAND",
+                    "contract_type": "STOCK"
+                },
+                {
+                    "symbol": "AMC",
+                    "exchange": "SMART",
+                    "whatToShow": "Trades",
+                    "primaryExchange": "ISLAND",
+                    "contract_type": "STOCK"
+                },
+                {
+                    "symbol": "BBBY",
+                    "exchange": "SMART",
+                    "whatToShow": "Trades",
+                    "primaryExchange": "ISLAND",
+                    "contract_type": "STOCK"
+                },
+                {
+                    "symbol": "TSLA",
+                    "exchange": "SMART",
+                    "whatToShow": "Trades",
+                    "primaryExchange": "ISLAND",
+                    "contract_type": "STOCK"
+                }
+            ],
+            "portfolios": {
+                "GME": {
+                    "has_stock": false,
+                    "purchase_price": 0,
+                    "quantity": 0,
+                    "profit": 0,
+                    "gross_profit": 0,
+                    "stop_loss_pct": 0.03,
+                    "purchases": 0,
+                    "hold_start_price": 0,
+                    "symbol": "GME"
+                },
+                "SPCE": {
+                    "has_stock": false,
+                    "purchase_price": 0,
+                    "quantity": 0,
+                    "profit": 0,
+                    "gross_profit": 0,
+                    "stop_loss_pct": 0.03,
+                    "purchases": 0,
+                    "hold_start_price": 0,
+                    "symbol": "SPCE"
+                },
+                "AMC": {
+                    "has_stock": false,
+                    "purchase_price": 0,
+                    "quantity": 0,
+                    "profit": 0,
+                    "gross_profit": 0,
+                    "stop_loss_pct": 0.03,
+                    "purchases": 0,
+                    "hold_start_price": 254.53,
+                    "symbol": "AMC"
+                },
+                "BBBY": {
+                    "has_stock": false,
+                    "purchase_price": 0,
+                    "quantity": 0,
+                    "profit": 0,
+                    "gross_profit": 0,
+                    "stop_loss_pct": 0.03,
+                    "purchases": 0,
+                    "hold_start_price": 107.35,
+                    "symbol": "BBBY"
+                },
+                "TSLA": {
+                    "has_stock": false,
+                    "purchase_price": 0,
+                    "quantity": 0,
+                    "profit": 0,
+                    "gross_profit": 0,
+                    "stop_loss_pct": 0.03,
+                    "purchases": 0,
+                    "hold_start_price": 107.35,
+                    "symbol": "TSLA"
+                }
+            }
+        },
+
+
+        "News-Managed": {
+            "equity": 25000,
+            "initial_capital": 25000,
+            "available_capital": 25000,
+            "start_date": "2021-01-14 13:56:00",
+            "crypto": false,
+            "trade_config": {
+                "trade_frequency": 300,
+                "stop_loss_pct": 0.03,
+                "recent_data_duration": "2 D"
+            },
+            "analysis_config": {
+                "duration": "80 D",
+                "correlation_threshold": 0.02,
+                "accuracy_threshold": 0.6,
+                "extremes_pct": 0.3,
+                "use_cached": true
+            },
+            "contracts": [
+                {
+                    "symbol": "UAL",
+                    "exchange": "SMART",
+                    "whatToShow": "Trades",
+                    "primaryExchange": "ISLAND",
+                    "contract_type": "STOCK"
+                },{
+                    "symbol": "AAL",
+                    "exchange": "SMART",
+                    "whatToShow": "Trades",
+                    "primaryExchange": "ISLAND",
+                    "contract_type": "STOCK"
+                },{
+                    "symbol": "ALK",
+                    "exchange": "SMART",
+                    "whatToShow": "Trades",
+                    "primaryExchange": "ISLAND",
+                    "contract_type": "STOCK"
+                },{
+                    "symbol": "DAL",
+                    "exchange": "SMART",
+                    "whatToShow": "Trades",
+                    "primaryExchange": "ISLAND",
+                    "contract_type": "STOCK"
+                },{
+                    "symbol": "BA",
+                    "exchange": "SMART",
+                    "whatToShow": "Trades",
+                    "primaryExchange": "ISLAND",
+                    "contract_type": "STOCK"
+                },{
+                    "symbol": "LUV",
+                    "exchange": "SMART",
+                    "whatToShow": "Trades",
+                    "primaryExchange": "ISLAND",
+                    "contract_type": "STOCK"
+                },{
+                    "symbol": "CCL",
+                    "exchange": "SMART",
+                    "whatToShow": "Trades",
+                    "primaryExchange": "ISLAND",
+                    "contract_type": "STOCK"
+                },{
+                    "symbol": "NCLH",
+                    "exchange": "SMART",
+                    "whatToShow": "Trades",
+                    "primaryExchange": "ISLAND",
+                    "contract_type": "STOCK"
+                }
+            ],
+            "portfolios": {}
+        },
+
+        "CNN-Crypto": {
+            "equity": 3000,
+            "initial_capital": 3000,
+            "available_capital": 3000,
+            "start_date": "2021-01-14 13:56:00",
+            "crypto": true,
+            "trade_config": {
+                "trade_frequency": 300,
+                "stop_loss_pct": 0.03,
+                "recent_data_duration": "1 D",
+                "train_duration": "10 D"
+            },
+            "cnn_config": {
+                "cnn_layers": [
+                    {
+                        "filters": 16,
+                        "kernel_size": 3,
+                        "stride": 1,
+                        "regularizer": 0,
+                        "dropout": 0,
+                        "pool_size": 0,
+                        "padding": "same"
+                    }
+                ],
+                "dense_layers": [{ "units": 200, "dropout": 0.2 }],
+                "batch_size": 16,
+                "epochs": 1000,
+                "optimizer": "adam",
+                "lr": 1e-5,
+                "lookback": 4,
+                "n_feats": 225,
+                "flush_models": false
+            },
+            "contracts": [{
+                "market": "BTC",
+                "currency": "USD"
+            },{
+                "market": "ETH",
+                "currency": "USD"
+            },{
+                "market": "LTC",
+                "currency": "USD"
+            },{
+                "market": "BCH",
+                "currency": "USD"
+            }],
+            "portfolios": {}
+        }
+    }
+}
