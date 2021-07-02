@@ -1,24 +1,49 @@
 # Welcome to Koi
 
+## Interface
+<p float="left">
+    <img src="public/gh/interface_a.png" width="46%">
+    <img src="public/gh/interface_b.png" width="45%">
+</p>
+
 ## Configuration
 
 
-### Brokerage Setup
+### Env Setup
 
-#### Robinhood
-For RH support create a file named `config.ini` located inside the top level `config` folder. Format it as so:
 ```
-[main]
-regular_account = [Account ID]
-regular_username = [Username]
-paper_account = [Account ID]
-paper_username = [Username]
+PHONE=[] # optional - notifies you when transactions occur (macOS + iMessage only)
+
+CRYPTO_EXCHANGE=[your desired crypto exchange] # can be one of 'robinhood' | 'coinbase' | 'kraken' | 'binance'
+CRYPTO_SANDBOX=[True|False] # determines if live trading is performed
+
+# Robinhood options: only required if using robinhood as your crypto exchange
+RH_LOGIN=[your robinhood login]
+RH_PASS=[your robinhood password]
+
+# Coinbase options: only required if using coinbase as your crypto exchange
+COINBASE_KEY=[your coinbase api key] 
+COINBASE_PASSPHRASE=[your coinbase api passphrase]
+COINBASE_SECRET=[your coinbase api secret]
+
+# Binance options: only required if using binance as your crypto exchange
+BINANCE_KEY=[your binance api key]
+BINANCE_SECRET=[your binance api secret]
+
+# Kraken options: only required if using kraken as your crypto exchange
+KRAKEN_API_KEY=[your kraken api key]
+KRAKEN_API_SECRET=[your kraken api secret]
+
+# Required: Your Interactive Brokers Details
+IB_ACCOUNT=[your ib account id]
+IB_USERNAME=[your ib username]
+IB_PORT=[trader workstation / ib gateway port] # usually 7496 for live, 7497 for paper
 ```
 
 
+### Strategy Configuration
 
-### Other Env Options
-`PHONE`: Optionally add a phone number to be notified of transactions (Mac + iMessage Only)
+*todo*
 
 
 ## Running
