@@ -9,7 +9,7 @@ import { isCryptoDataList, StrategyInfo } from '@types';
 
 export interface StrategyCardProps { strategy: StrategyInfo, ticks: TickState };
 const StrategyCard =  ({ strategy }: StrategyCardProps) => {
-  const { name, equity, available_capital, portfolios, contracts, trade_config } = strategy;
+  const { name, equity, available_capital, contracts, trade_config } = strategy;
 
   const [showConfig, setShowConfig] = useState(false);
   const capitalInput = useRef<HTMLInputElement>()
@@ -107,6 +107,8 @@ const StrategyCard =  ({ strategy }: StrategyCardProps) => {
                 {/* Strategy Active Toggle */}
                 <div className="relative w-auto pl-4 flex-initial cursor-pointer">
                   <div
+                    title="Toggle Strategy Trading"
+                    aria-label="Toggle Strategy Trading"
                     onClick={toggleStrategyTrading}
                     className={`text-white p-3 transition text-center inline-flex items-center justify-center w-8 h-8 shadow-lg rounded-full ${strategy.active ? 'bg-green-400' : 'bg-red-400'} transform hover:scale-105`}
                   >
@@ -118,6 +120,8 @@ const StrategyCard =  ({ strategy }: StrategyCardProps) => {
                 {/* Analyze Strategy Toggle */}
                 <div className="relative w-auto pl-4 flex-initial cursor-pointer">
                   <div
+                    title="Trigger Analysis"
+                    aria-label="Trigger Analysis"
                     onClick={triggerAnalysis}
                     className={`text-purple-800 transition p-3 text-center inline-flex items-center justify-center w-8 h-8 shadow-lg rounded-full border border-purple-400 transform hover:scale-105`}
                   >
@@ -129,6 +133,8 @@ const StrategyCard =  ({ strategy }: StrategyCardProps) => {
                 {/* Strategy Backtest Toggle */}
                 <div className="relative w-auto pl-4 flex-initial cursor-pointer">
                   <div
+                    title="Trigger Backtest"
+                    aria-label="Trigger Backtest"
                     onClick={triggerBacktest}
                     className={`text-blue-800 transition p-3 text-center inline-flex items-center justify-center w-8 h-8 shadow-lg rounded-full border border-blue-400 transform hover:scale-105`}
                   >
@@ -138,19 +144,21 @@ const StrategyCard =  ({ strategy }: StrategyCardProps) => {
 
                 
                 {/* Strategy Backtest Toggle */}
-                <div className="relative w-auto pl-4 flex-initial cursor-pointer">
+                {/* <div className="relative w-auto pl-4 flex-initial cursor-pointer">
                   <div
                     onClick={() => console.log('refreshing portfolios')}
                     className={`text-yellow-600 transition p-3 text-center inline-flex items-center justify-center w-8 h-8 shadow-lg rounded-full border border-yellow-300 transform hover:scale-105`}
                   >
                     <i className='fas fa-sync'></i>
                   </div>
-                </div>
+                </div> */}
                 
 
                 {/* Strategy Settings */}
                 <div className="relative w-auto pl-4 flex-initial cursor-pointer">
                   <div
+                    title={showConfig ? "Close Settings" : "Strategy Settings"}
+                    aria-label={showConfig ? "Close Settings" : "Strategy Settings"}
                     onClick={() => setShowConfig(!showConfig)}
                     className={`text-gray-400 transition p-3 text-center inline-flex items-center justify-center w-8 h-8 shadow-lg rounded-full border border-gray-400 transform hover:scale-105`}
                   >
@@ -271,7 +279,7 @@ const StrategyCard =  ({ strategy }: StrategyCardProps) => {
                       </span>
                     </div>
                   ))}
-                  {holdings.length == 0 && (
+                  {holdings.length === 0 && (
                     <span className="text-base text-gray-600 dark:text-white font-base">No holdings</span>
                   )}
                 </div>
@@ -290,7 +298,13 @@ const StrategyCard =  ({ strategy }: StrategyCardProps) => {
                     <div className="absolute inset-y-0 left-0 ml-1 mt-1 flex items-center">
                       <span>$</span>
                     </div>
-                    <input type="number" min={0} max={available_capital} className="mt-1 pl-4 block w-full rounded-md bg-gray-100 border-transparent dark:border dark:bg-transparent dark:border-gray-300 dark:text-white focus:border-gray-500 focus:bg-white focus:ring-0" placeholder={available_capital.toFixed(2)} />
+                    <input
+                      type="number"
+                      min={0}
+                      max={available_capital}
+                      className="mt-1 pl-4 block w-full rounded-md bg-gray-100 border-transparent dark:border dark:bg-transparent dark:border-gray-300 dark:text-white focus:border-gray-500 focus:bg-white focus:ring-0"
+                      placeholder={(available_capital || 0).toFixed(2)}
+                    />
                   </label>
                 </div>
                 <div className="flex items-end pb-2">

@@ -41,6 +41,9 @@ IB_PORT=[trader workstation / ib gateway port] # usually 7496 for live, 7497 for
 ```
 
 
+### Application Structure
+
+
 ### Strategy Configuration
 
 *todo*
@@ -50,8 +53,13 @@ IB_PORT=[trader workstation / ib gateway port] # usually 7496 for live, 7497 for
 To start Koi after you have your desired configuration and have installed the required npm/pip packages, simply run
 
 ```
-python3 app.py
+yarn build && python3 app.py 
 ```
 
 in your terminal.
+
+If you haven't made any changes to the UI code (and have previously ran `yarn build`), you can just run
+```
+python3 app.py
+```.
 

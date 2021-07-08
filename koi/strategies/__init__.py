@@ -8,7 +8,6 @@ def get_defined_strategies() -> List[Type[StrategyInterface]]:
         if file.endswith(".py") and not file.startswith('__init__') and not file.startswith('root'):
 
             module_name = os.path.join("koi/strategies", file)
-            print(os.path.join("koi/strategies", file))
             with open(module_name) as f:
                 file_content = {}
                 exec(f.read(), file_content)
@@ -17,5 +16,6 @@ def get_defined_strategies() -> List[Type[StrategyInterface]]:
                 else:
                     strategies.append(file_content['Strategy'])
 
+    print(f'Found {len(strategies)} defined strategies')
     return strategies
 

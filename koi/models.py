@@ -9,7 +9,6 @@ from ibapi.contract import Contract
 
 from koi.portfolio import Portfolio
 from koi.modeling.modeling_models import ModelParams
-# from koi.strategies.root import StrategyInterface
 
 
 
@@ -178,15 +177,26 @@ class TransactionReport(object):
 
 
 # Trading
-class TradeConfig(NamedTuple):
+class TradeConfig(object):
+    """
+    trade_frequency: frequency of trading interval in seconds
+    stop_loss_pct: percentage of loss to trigger stop loss
+    recent_data_duration: amt of data fetched immediately prior to beginning trading, after training & analysis
+    train_duration: size of data to train on (e.g. '5d', '1y')
+    train_pct: percentage of data to train on vs test on
+    """
     trade_frequency: int = 300
     stop_loss_pct: float = 0.03
-
-    # data fetched immediately prior to beginning trading, after training & analysis
     recent_data_duration: Union[str, None] = None
-
     train_duration: Union[str, None] = None
     train_pct: float = 0.7
+
+    def __init__(self, trade_frequency: int = 300, stop_loss_pct: float = 0.03, recent_data_duration: Union[str, None] = None, train_duration: Union[str, None] = None, train_pct: float = 0.7) -> None:
+        self.trade_frequency = trade_frequency
+        self.stop_loss_pct = stop_loss_pct
+        self.recent_data_duration = recent_data_duration
+        self.train_duration = train_duration
+        self.train_pct = train_pct
 
     @classmethod
     def from_json(cls, data: dict):
@@ -218,52 +228,7 @@ class CB_Order(object):
     def __init__(self, **kwargs):
         self.__dict__.update(kwargs)
 
-    # order: {
-    # 'id': '5ef144c9-9399-4fff-bd84-bd67216b4a36',
-    # 'size': '2.54721475',
-    # 'product_id': 'BTC-USD',
-    # 'side': 'buy',
-    # 'stp': 'dc',
-    # 'funds': '99502.48756218',
-    # 'type': 'market',
-    # 'post_only': False,
-    # 'created_at': '2021-02-02T09:57:08.034667Z',
-    # 'fill_fees': '0',
-    # 'filled_size': '0', 'executed_value': '0', 'status': 'pending', 'settled': False}
-
-    #{'id': '7d917790-23fb-407f-9970-f0a664e691e3',
-    # 'size': '2.48604911',
-    # 'product_id': 'BTC-USD',
-    # 'side': 'buy',
-    # 'stp': 'dc',
-    # 'funds': '11348.21523217',
-    # 'type': 'market',
-    # 'post_only': False,
-    # 'created_at': '2021-02-03T00:18:06.182634Z',
-    # 'fill_fees': '0',
-    # 'filled_size': '0',
-    # 'executed_value': '0', 'status': 'pending', 'settled': False}
-
-
-    # Example
-    # {
-    #     "id": "d0c5340b-6d6c-49d9-b567-48c4bfca13d2",
-    #     "price": "0.10000000",
-    #     "size": "0.01000000",
-    #     "product_id": "BTC-USD",
-    #     "side": "buy",
-    #     "stp": "dc",
-    #     "type": "limit",
-    #     "time_in_force": "GTC",
-    #     "post_only": false,
-    #     "created_at": "2016-12-08T20:02:28.53864Z",
-    #     "fill_fees": "0.0000000000000000",
-    #     "filled_size": "0.00000000",
-    #     "executed_value": "0.0000000000000000",
-    #     "status": "pending",
-    #     "settled": false
-    # }
-
+ 
 
     @classmethod
     def from_json(cls, data: dict):

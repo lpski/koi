@@ -117,7 +117,7 @@ class CB_Client(Market):
                 self.stream_products = [c.symbol for c in contracts]
 
             if self.exchange == 'coinbase':
-                print('starting cb socket')
+                print('starting crypto socket: coinbase')
                 # Channel options: ['ticker', 'user', 'matches', 'level2', 'full']
                 self.socket = cb_socket(channels=['ticker'], products=self.stream_products, auth=False, api_key=self.key, api_secret=self.secret, api_passphrase=self.passphrase)
 
@@ -130,7 +130,10 @@ class CB_Client(Market):
     ########
     # DATA 
     ########
+    def handle_socket_error(self, e): pass
+
     def toggle_tick_streaming(self):
+        self.socket.on_error = self.handle_socket_error
         if self.exchange == 'kraken':
             if self.tick_streaming_enabled:
                 self.kraken.stream_ticks = False
@@ -140,7 +143,9 @@ class CB_Client(Market):
                     args=[self.stream_products]
                 ).start()
         elif self.exchange == 'coinbase':
-            if self.tick_streaming_enabled: self.socket.close()
+            if self.tick_streaming_enabled:
+                try: self.socket.close()
+                except Exception as e: pass
             else: self.socket.start()
 
         self.tick_streaming_enabled = not self.tick_streaming_enabled

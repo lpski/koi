@@ -1,4 +1,4 @@
-import pandas as pd, dotenv, asyncio
+import pandas as pd, dotenv, asyncio, sys
 from copy import deepcopy
 from threading import Thread
 from typing import List
@@ -57,6 +57,7 @@ class Platform:
 
         except KeyboardInterrupt:
             if self.ib_client.ib.isConnected(): self.ib_client.ib.disconnect()
+            sys.exit(0)
 
 
 

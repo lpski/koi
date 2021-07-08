@@ -16,7 +16,6 @@ interface Config {
 
 export interface ConfigCardProps { mode: 'backtest' | 'analysis' };
 const ConfigCard = ({ mode }: ConfigCardProps) => {
-
   const [visible, setVisible] = useState(true);
   const [useDateRange, setUseDateRange] = useState(false);
   const [useCache, setUseCache] = useState(true);
@@ -35,12 +34,6 @@ const ConfigCard = ({ mode }: ConfigCardProps) => {
 
 
   // Backtest config params
-
-
-
-
-
-
   return (
     <div className="relative mb-6 flex-grow dark:text-white flex flex-col divide-y min-w-0 break-words bg-white dark:bg-off-black rounded shadow-lg border-2">
       <div className="flex flex-row items-center transition justify-between cursor-pointer p-4" onClick={() => setVisible(!visible)}>
@@ -111,74 +104,69 @@ const ConfigCard = ({ mode }: ConfigCardProps) => {
                 </div>
 
 
+                {/* Frame Configs */}
+                <div className="pb-4">
+                  <span className="text-xs uppercase text-gray-400">Frame Sizing</span>
 
+                  <div className="flex flex-col px-6 space-y-4">
 
-                  {/* Frame Configs */}
-                  <div className="pb-4">
-                    <span className="text-xs uppercase text-gray-400">Frame Sizing</span>
-
-                    <div className="flex flex-col px-6 space-y-4">
-
-                      {/* Sequences */}
-                      <div className="my-2 flex flex-col space-y-1">
-                        <div className="flex flex-row items-end justify-between">
-                          <span>Sequence Sizes</span>
-                        </div>
-
-                        <Select
-                          defaultValue={sequenceOptions.slice(0, 3)}
-                          isMulti
-                          name="Sequences"
-                          options={sequenceOptions}
-                          className="focus:ring-indigo-500 focus:border-indigo-500 h-full py-0 pl-2 pr-7 border-transparent bg-transparent text-gray-500 sm:text-sm rounded-md"
-                          classNamePrefix="select"
-                        />
+                    {/* Sequences */}
+                    <div className="my-2 flex flex-col space-y-1">
+                      <div className="flex flex-row items-end justify-between">
+                        <span>Sequence Sizes</span>
                       </div>
 
-
-                      {/* Windows */}
-                      <div className="my-2 flex flex-col space-y-1">
-                        <div className="flex flex-row items-end justify-between">
-                          <span>Window Sizes</span>
-                        </div>
-
-                        <Select
-                          defaultValue={windowOptions.slice(0, 1)}
-                          isMulti
-                          name="Windows"
-                          options={windowOptions}
-                          className="focus:ring-indigo-500 focus:border-indigo-500 h-full py-0 pl-2 pr-7 border-transparent bg-transparent text-gray-500 sm:text-sm rounded-md"
-                          classNamePrefix="select"
-                        />
-                      </div>
-
-                      
-
-                      {/* Extremes */}
-                      <div className="my-2 flex flex-col">
-                        <div className="flex flex-row items-end justify-between">
-                          <span>Extremes Sizes</span>
-                        </div>
-
-                        <Select
-                          defaultValue={extremesOptions.slice(0, 3)}
-                          isMulti
-                          name="Extremes"
-                          options={extremesOptions}
-                          className="focus:ring-indigo-500 focus:border-indigo-500 h-full py-0 pl-2 pr-7 border-transparent bg-transparent text-gray-500 sm:text-sm rounded-md"
-                          classNamePrefix="select"
-                        />
-                      </div>
-
-
+                      <Select
+                        defaultValue={sequenceOptions.slice(0, 3)}
+                        isMulti
+                        name="Sequences"
+                        options={sequenceOptions}
+                        className="focus:ring-indigo-500 focus:border-indigo-500 h-full py-0 pl-2 pr-7 border-transparent bg-transparent text-gray-500 sm:text-sm rounded-md"
+                        classNamePrefix="select"
+                      />
                     </div>
+
+
+                    {/* Windows */}
+                    <div className="my-2 flex flex-col space-y-1">
+                      <div className="flex flex-row items-end justify-between">
+                        <span>Window Sizes</span>
+                      </div>
+
+                      <Select
+                        defaultValue={windowOptions.slice(0, 1)}
+                        isMulti
+                        name="Windows"
+                        options={windowOptions}
+                        className="focus:ring-indigo-500 focus:border-indigo-500 h-full py-0 pl-2 pr-7 border-transparent bg-transparent text-gray-500 sm:text-sm rounded-md"
+                        classNamePrefix="select"
+                      />
+                    </div>
+
+                    
+
+                    {/* Extremes */}
+                    <div className="my-2 flex flex-col">
+                      <div className="flex flex-row items-end justify-between">
+                        <span>Extremes Sizes</span>
+                      </div>
+
+                      <Select
+                        defaultValue={extremesOptions.slice(0, 3)}
+                        isMulti
+                        name="Extremes"
+                        options={extremesOptions}
+                        className="focus:ring-indigo-500 focus:border-indigo-500 h-full py-0 pl-2 pr-7 border-transparent bg-transparent text-gray-500 sm:text-sm rounded-md"
+                        classNamePrefix="select"
+                      />
+                    </div>
+
+
                   </div>
-                
-                
-                
+                </div>
+              
                 </>
               )}
-
 
 
 

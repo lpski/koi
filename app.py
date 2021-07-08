@@ -204,27 +204,26 @@ def analyze_strategy(strategy_name: str):
 
 @eel.expose
 def heartbeat():
-    """Toggles active/inactive state for a given strategy"""
+    """Notifies UI that server is still alive"""
     return datetime.now().timestamp()
 
 
 # Strategy Modifications
 @eel.expose
 def set_strategy_active_state(name: str):
+    """Enables/Disables active trading for strategy with a given name"""
     platform.toggle_strategy(name)
 
 
 @eel.expose
 def set_strategy_capital(name: str, capital: float):
+    """Updates capital allocation to a strategy with a given name"""
     matching = [t for t in platform.traders if t.strategy.name == name]
     if len(matching == 0): return
     
     trader = matching[0]
     trader.strategy.available_capital = capital
     save_strategy_config(trader.strategy)
-
-
-
 
 
 

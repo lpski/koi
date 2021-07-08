@@ -39,14 +39,14 @@ useInterval(() => {
   window.eel.heartbeat()((message: string) => {
     console.log('heartbeat:', message)
   })
-}, 1000)
+}, 5000)
   
 
   // Tick State
   const tickStreamingActive = useRecoilValue(getTickStreamingActive);
   const tickTab = useRecoilValue(getTickTab);
   useInterval(() => {
-    if (!window.eel || !tickStreamingActive || page != 'trade') return;
+    if (!window.eel || !tickStreamingActive || page !== 'trade') return;
 
     if (tickTab === 'crypto') {
       window.eel.fetch_crypto_tick_data()((data: { [symbol: string]: TickData }) => {
@@ -66,7 +66,7 @@ useInterval(() => {
 
   // Trader Bars
   useInterval(() => {
-    if (!window.eel || !selectedStrategy || page != 'trade') return;
+    if (!window.eel || !selectedStrategy || page !== 'trade') return;
     
     console.log(`fetching trader bars: ${selectedStrategy.name}`);
     window.eel.fetch_trader_bars(selectedStrategy.name)((data: BarState) => {
@@ -78,7 +78,7 @@ useInterval(() => {
 
   // Backtest State & bars
   useInterval(() => {
-    if (!window.eel || page != 'backtest') return;
+    if (!window.eel || page !== 'backtest') return;
 
     try {
       window.eel.fetch_backtest_performances()((backtests: BacktestsState) => {
@@ -90,8 +90,7 @@ useInterval(() => {
 
   const btName = useRecoilValue(getSelectedBacktestName);
   useInterval(() => {
-    if (!window.eel || !selectedStrategy || page != 'backtest' || !btName) {
-      console.log('hit c')
+    if (!window.eel || !selectedStrategy || page !== 'backtest' || !btName) {
       return;
     }
 
@@ -111,7 +110,7 @@ useInterval(() => {
   const [extremesSize, setExtremesSize] = useRecoilState(selectedExtremesSize);
 
   useInterval(() => {
-    if (!window.eel || page != 'analysis') return;
+    if (!window.eel || page !== 'analysis') return;
   
     window.eel.fetch_analyses()((analyses: AnalysisState) => {
       setAnalysisState(analyses);
@@ -137,7 +136,6 @@ useInterval(() => {
             setAnalysisSymbol(Object.keys(analyses[selected].analysis_data)[0]);
           }
         }
-
       }
     });
   }, 5000);
