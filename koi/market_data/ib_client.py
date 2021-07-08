@@ -118,7 +118,8 @@ class IB_Client(Market):
                 if df is not None: df.to_csv(filepaths[sym])
 
         data = list(filter(lambda d: not isinstance(d, ConnectionError), data))
-        if apply_config is not None: data = [(sym, apply_strategies(sym, df, size, specific_fields=(apply_config.specific_strategies[sym] if apply_config.specific_strategies is not None else None), lookback=apply_config.lookbacks[sym], labels=apply_config.labels)) for sym, df in data if df is not None and df.shape[0] > 0]
+        if apply_config is not None:
+            data = [(sym, apply_strategies(sym, df, size, specific_fields=(apply_config.specific_strategies[sym] if apply_config.specific_strategies and len(apply_config.specific_strategies) > 0 else None), lookback=apply_config.lookbacks[sym], labels=apply_config.labels)) for sym, df in data if df is not None and df.shape[0] > 0]
         else: data = [(sym, apply_without_strategies(df)) for sym, df in data if df is not None and df.shape[0] > 0]
 
         return data

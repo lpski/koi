@@ -43,6 +43,7 @@ IB_PORT=[trader workstation / ib gateway port] # usually 7496 for live, 7497 for
 
 ### Application Structure
 
+*todo*
 
 ### Strategy Configuration
 
@@ -59,7 +60,9 @@ yarn build && python3 app.py
 in your terminal.
 
 If you haven't made any changes to the UI code (and have previously ran `yarn build`), you can just run
+
 ```
 python3 app.py
-```.
+```
+
 

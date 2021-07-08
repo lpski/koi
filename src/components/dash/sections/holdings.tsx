@@ -16,7 +16,7 @@ const Holdings = ({ strategy }: HoldingsProps) => {
 
   const addInstrumentToStrategy = (e: React.FormEvent<HTMLFormElement>) => {
     console.log('adding new instrument:', e)
-    setAddingInstrument(false)
+    setAddingInstrument(false);
   }
 
   const extractRowIdentifier = (rowData: any[], index: number): string => {
